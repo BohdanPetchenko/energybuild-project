@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap'
 import { connect } from 'react-redux'
+import jwtDecode from 'jwt-decode';
 
 import actionChangeStatus from '../actions/action-change-order'
-
+import { history } from "../history/index";
 
 
 
 
 const ChangeStatus = ({ onChange }) => {
+    let userToken = localStorage.getItem('userToken')
+    let decodeToken = jwtDecode(userToken)
+
+    if (decodeToken.roles[0] !== "admin") {
+        history.push('/')
+    }
 
     const [orderId, setOrderId] = useState('')
     const [statusId, setStatusId] = useState('')
