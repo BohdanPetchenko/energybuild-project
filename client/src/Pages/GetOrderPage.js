@@ -37,9 +37,9 @@ function GetOrders({ getUserOrders }) {
 
         }
         fetchData()
-    })
+    }, [])
 
-    debugger
+    
     return (
 
         <Container className='container-wrap' style={{ width: '1200px', marginTop: 15 }}>

@@ -31,12 +31,19 @@ schema {
 }
 `),
 protected: buildSchema(`
+
 input OrderInput {
   nameOrganization: String!
   addressOrganization: String!
   contactNumber: String!
   orderWorks: [ String ]!
 }
+
+input OrderStatusInput {
+  orderId: String!
+  statusId: String!  
+}
+
 type Work {
   id: String!
   nameWork: String!
@@ -70,6 +77,7 @@ type UserData {
 }
 type RootMutation {
   createOrder(orderInput: OrderInput): StringResult
+  changeOrderStatus(orderStatusInput: OrderStatusInput): StringResult
 }
 type RootQuery {
   getOrders: [Order]

@@ -9,11 +9,12 @@ import d from "../helpers/d"
 export default function actionLogin(login, password) {
     return async dispatch => {
        
-        let ourToken = await dispatch(actionLoginPromise(login, password))
-        if (ourToken){
-            localStorage.setItem("userToken" , d`${ourToken}.data.loginUser.token`)
+        let result = await dispatch(actionLoginPromise(login, password))
+        debugger
+        if (result.data.loginUser !== null){
+            localStorage.setItem("userToken" , d`${result}.data.loginUser.token`)
             history.push('/account')
-            dispatch(actionToken(ourToken))  
+            dispatch(actionToken(result))  
         }
         else{
             history.push('/login')

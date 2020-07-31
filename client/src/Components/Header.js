@@ -13,6 +13,8 @@ import Register from "../Pages/Register";
 import MyAccount from "../Pages/MyAccount";
 import GetOrderPage from '../Pages/GetOrderPage'
 import CreateOrderPage from '../Pages/CreateOrderPage'
+import AllUsersAdmin from '../Pages/AllUsersAdmin'
+import ChangeStatus from '../Pages/ChangeStatus'
 
 
 import PrivateRoute from "../helpers/private-route";
@@ -73,6 +75,8 @@ class Header extends React.Component {
                 <PrivateRoute exact path="/account" component={MyAccount} />
                 <PrivateRoute exact path="/account/myorders" component={GetOrderPage} />
                 <PrivateRoute exact path="/account/createorder" component={CreateOrderPage} />
+                <PrivateRoute exact path="/account/all-users" component={AllUsersAdmin} />
+                <PrivateRoute exact path="/account/change-order-status" component={ChangeStatus} />
             </Switch>
           </>
         );
